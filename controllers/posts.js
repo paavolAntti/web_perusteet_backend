@@ -36,6 +36,7 @@ postRouter.put('/:id', async (req, res) => {
 		username: body.username,
 		content: body.content
 	})
+	console.log('comment to save: ', comment)
 	await comment.save()
 	const post = await Post.findById(req.params.id)
 	console.log('this is post: ', post)
