@@ -11,7 +11,7 @@ const mongoose = require('mongoose')
 const mongodb = config.MONGODB_URI
 console.log('connecting to MongoDB at ', mongodb)
 
-mongoose.connect(mongodb, { useNewUrlParser: true })
+mongoose.connect(mongodb, { useNewUrlParser: true, useUnifiedTopology: true })
 	.then(() => {
 		console.log('connected to MongoDB')
 	})

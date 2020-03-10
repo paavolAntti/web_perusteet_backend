@@ -37,7 +37,11 @@ postRouter.put('/:id', async (req, res) => {
 		content: body.content
 	})
 	console.log('comment to save: ', comment)
-	await comment.save()
+	try {
+		await comment.save()
+	} catch (error) {
+		console.log('error saving comment', error.message)
+	}
 	const post = await Post.findById(req.params.id)
 	console.log('this is post: ', post)
 	const updatedPost = {

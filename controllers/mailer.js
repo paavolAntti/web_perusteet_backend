@@ -19,8 +19,8 @@ emailRouter.post('/', async (req, res) => {
 		from: body.email,
 		to: config.SEND_TO,
 		subject: 'contact from profile page',
-		text: `${body.message}\n
-				sent by ${body.email}`
+		text: `${body.message}
+			Sender email: ${body.email}`
 	}
 	try {
 		await transport.sendMail(email)
@@ -30,6 +30,7 @@ emailRouter.post('/', async (req, res) => {
 		console.log('error sendin email: ', error.message)
 		
 	}
+	transport.close()
 	
 })
 
