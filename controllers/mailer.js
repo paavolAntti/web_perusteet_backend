@@ -3,7 +3,6 @@ const nodemailer = require('nodemailer')
 const config = require('../utils/config')
 
 
-
 emailRouter.post('/', async (req, res) => {
 	const body = req.body
 	//const testAccount = await nodemailer.createTestAccount()

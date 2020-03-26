@@ -16,6 +16,7 @@ commentRouter.post('/', async (req, res) => {
 		res.json(savedComment.toJSON())
 	} catch (error) {
 		console.log('error posting ', error.message)
+		res.status(400).end()
 	}
 })
 // all comments from database
@@ -25,9 +26,12 @@ commentRouter.get('/', async (req, res) => {
 })
 // comments by id
 commentRouter.get('/:id', async (req, res) => {
-	const comment = await Comment.findById(req.params.id)
-
-	res.json(comment.toJSON())
+	try {
+		const comment = await Comment.findById(req.params.id)
+		res.json(comment.toJSON())
+	} catch (error) {
+		res.status(400).end()
+	}
 })
 module.exports = commentRouter
 
